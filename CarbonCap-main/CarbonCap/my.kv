@@ -1,0 +1,85 @@
+<MyScreenManager>:
+    QuizScreen:
+        name: "quiz"
+    AdviceScreen:
+        name: "advice"
+    MyScreen:
+        name: "main"
+
+
+<MyScreen>:
+    FloatLayout:
+        size_hint: (None, None)
+        size: (dp(200), dp(200))
+        pos_hint: {'center_x': 0.9, 'center_y': 0.5}
+
+        Image:
+            source: 'images/house2.png'
+            size_hint: (None, None)
+            size_hint_y: 3.5 # increase the height of the image
+            size_hint_x: 3.5 # disable the width size_hint
+            size: (self.width, self.height)
+            pos_hint: {'center_x': -0.9, 'center_y': 0.2}
+    
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            #Color:
+             #   rgba: 0.714, 0.576, 0.435, 1 
+            Rectangle:
+                source: 'images/Menu3.png'
+                pos: self.x + dp(90), self.y
+                size: self.width * 0.25, self.height # set the size to 20% of the screen width
+
+
+        orientation: 'vertical'
+        
+        Image:
+            source: 'images/Carbon.png'
+            size_hint_y: 0.2
+            pos_hint: {'x': 0.1, 'center_y': 0.9}
+
+
+            
+        Button:
+            background_normal: "images/1.png"
+            background_down: "images/1.png"
+            size_hint: None, None
+            size: root.width * 0.2, root.height * 0.2
+            pos_hint: {'x': 0.1, 'y': 0.8}
+            on_release:
+                app.root.current = "prediction" 
+                root.manager.transition.direction = "left"
+            on_press: root.launch_prediction()
+
+
+
+        Button:
+            background_normal: "images/2.png"
+            background_down: "images/2.png"
+            size_hint: None, None
+            size: root.width * 0.2, root.height * 0.2
+            pos_hint: {'x': 0.1, 'y': 0.7}
+            on_press: root.launch_advice()
+            
+        Button:
+            background_normal: "images/3.png"
+            background_down: "images/3.png"
+            size_hint: None, None
+            size: root.width * 0.2, root.height * 0.2
+            pos_hint: {'x': 0.1, 'y': 0.5}
+            on_release:
+                app.root.current = "quiz" 
+                root.manager.transition.direction = "left"
+            on_press: root.launch_quiz()
+
+            
+        Button:
+            background_normal: "images/4.png"
+            background_down: "images/4.png"
+            size_hint: None, None
+            size: root.width * 0.2, root.height * 0.2
+            pos_hint: {'x': 0.1, 'y': 0.4}
+            on_press: root.launch_controls()
+
+
